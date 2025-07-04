@@ -1,6 +1,8 @@
 "use client";
 import { Moon } from "lucide-react";
 import { useState } from "react";
+import { motion } from "motion/react";
+
 const Logo = () => {
   return (
     <div className="flex items-center gap-2">
@@ -36,7 +38,7 @@ const LoginButton = () => {
 const Navbar = () => {
   const [active, setActive] = useState<"features" | "pricing" | "contact" | "">("");
   return (
-    <div className="flex items-center gap-7 absolute inset-x-0 justify-center">
+    <motion.div className="flex items-center gap-7 absolute inset-x-0 justify-center" layoutId="navbar">
       <button className="text-sm text-neutral-300 relative px-3 py-2" onMouseEnter={() => setActive("features")} onMouseLeave={() => setActive("")}>
         <span>Features</span>
         {active === "features" && <div className="absolute bg-neutral-700 inset-0 rounded-full -z-10 opacity-50"></div>}
@@ -49,7 +51,7 @@ const Navbar = () => {
         <span>Contact</span>
         {active === "contact" && <div className="absolute bg-neutral-700 inset-0 rounded-full -z-10 opacity-50"></div>}
       </button>
-    </div>
+    </motion.div>
   );
 };
 
