@@ -76,14 +76,14 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Simple,{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               transparent
             </span>{" "}
             pricing
           </h2>
-          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
             Choose the perfect plan for your needs. All plans include our core features 
             with no hidden fees or surprise charges.
           </p>
@@ -103,8 +103,8 @@ const Pricing = () => {
               <Card className={`
                 p-8 h-full flex flex-col relative overflow-hidden
                 ${plan.popular 
-                  ? 'bg-gradient-to-b from-blue-600/20 to-purple-600/20 border-blue-500/50' 
-                  : 'bg-neutral-800/50 border-neutral-700'
+                  ? 'bg-gradient-to-b from-blue-600/10 dark:from-blue-600/20 to-purple-600/10 dark:to-purple-600/20 border-blue-500/50' 
+                  : 'bg-gray-50 dark:bg-neutral-800/50 border-gray-200 dark:border-neutral-700'
                 }
                 backdrop-blur-sm hover:bg-opacity-80 transition-all duration-300
               `}>
@@ -119,11 +119,11 @@ const Pricing = () => {
                 
                 <div className={`${plan.popular ? 'mt-10' : 'mt-0'}`}>
                   <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                    <p className="text-neutral-400 mb-4">{plan.description}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
+                    <p className="text-gray-600 dark:text-neutral-400 mb-4">{plan.description}</p>
                     <div className="flex items-baseline">
-                      <span className="text-5xl font-bold text-white">{plan.price}</span>
-                      <span className="text-xl text-neutral-400 ml-1">{plan.period}</span>
+                      <span className="text-5xl font-bold text-gray-900 dark:text-white">{plan.price}</span>
+                      <span className="text-xl text-gray-600 dark:text-neutral-400 ml-1">{plan.period}</span>
                     </div>
                   </div>
 
@@ -132,7 +132,7 @@ const Pricing = () => {
                       w-full mb-8 py-6 text-lg font-semibold
                       ${plan.popular 
                         ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                        : 'bg-neutral-700 hover:bg-neutral-600 text-white'
+                        : 'bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-neutral-600 text-gray-900 dark:text-white'
                       }
                     `}
                   >
@@ -143,7 +143,7 @@ const Pricing = () => {
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
                         <Check className="h-5 w-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-neutral-300">{feature}</span>
+                        <span className="text-gray-700 dark:text-neutral-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -160,15 +160,15 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-neutral-800/30 rounded-2xl p-8 border border-neutral-700">
-            <h3 className="text-2xl font-bold text-white mb-4">
+          <div className="bg-gray-100 dark:bg-neutral-800/30 rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Need a custom solution?
             </h3>
-            <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
               We offer enterprise-grade solutions with custom pricing, dedicated infrastructure, 
               and white-label options for large organizations.
             </p>
-            <Button variant="outline" className="border-neutral-600 text-neutral-200 hover:bg-neutral-800">
+            <Button variant="outline" className="border-gray-300 dark:border-neutral-600 text-gray-900 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800">
               Contact Enterprise Sales
             </Button>
           </div>

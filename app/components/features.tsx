@@ -75,13 +75,13 @@ const Features = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Everything you need to{" "}
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               succeed
             </span>
           </h2>
-          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
             Our comprehensive platform provides all the tools and features you need 
             to build, deploy, and scale your applications with confidence.
           </p>
@@ -98,17 +98,17 @@ const Features = () => {
               whileHover={{ y: -5 }}
               className="h-full"
             >
-              <Card className="bg-neutral-800/50 border-neutral-700 p-6 h-full flex flex-col backdrop-blur-sm hover:bg-neutral-800/70 transition-all duration-300">
+              <Card className="bg-gray-50 dark:bg-neutral-800/50 border-gray-200 dark:border-neutral-700 p-6 h-full flex flex-col backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-neutral-800/70 transition-all duration-300">
                 <div className="flex items-center justify-between mb-4">
                   <feature.icon className="h-10 w-10 text-blue-400" />
                   <Badge variant="secondary" className="bg-blue-600/20 text-blue-300 border-blue-500/30">
                     {feature.badge}
                   </Badge>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-neutral-400 flex-1">
+                <p className="text-gray-600 dark:text-neutral-400 flex-1">
                   {feature.description}
                 </p>
               </Card>
@@ -123,11 +123,11 @@ const Features = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-8 border border-neutral-700">
-            <h3 className="text-2xl font-bold text-white mb-4">
+          <div className="bg-gradient-to-r from-blue-500/5 dark:from-blue-500/10 to-purple-500/5 dark:to-purple-500/10 rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Ready to experience the future of deployment?
             </h3>
-            <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
               Join thousands of developers who have revolutionized their workflow 
               with our platform. Start your journey today.
             </p>

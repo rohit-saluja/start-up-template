@@ -58,7 +58,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-neutral-900/50 border-t border-neutral-800 py-16 px-6">
+    <footer className="bg-gray-50 dark:bg-neutral-900/50 border-t border-gray-200 dark:border-neutral-800 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           <div className="lg:col-span-2">
@@ -77,9 +77,9 @@ const Footer = () => {
                     <div className="rounded-sm h-2 w-2 bg-blue-500"></div>
                   </div>
                 </div>
-                <p className="text-xl font-semibold text-white">Startup</p>
+                <p className="text-xl font-semibold text-gray-900 dark:text-white">Startup</p>
               </div>
-              <p className="text-neutral-400 mb-6 max-w-sm">
+              <p className="text-gray-600 dark:text-neutral-400 mb-6 max-w-sm">
                 The fastest way to deploy and scale your applications. 
                 Built for developers, trusted by enterprises.
               </p>
@@ -88,7 +88,7 @@ const Footer = () => {
                   <motion.a
                     key={index}
                     href={social.href}
-                    className="text-neutral-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-500 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     aria-label={social.label}
@@ -108,13 +108,13 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-white font-semibold mb-4">{section.title}</h3>
+                <h3 className="text-gray-900 dark:text-white font-semibold mb-4">{section.title}</h3>
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <a
                         href={link.href}
-                        className="text-neutral-400 hover:text-white transition-colors duration-200 text-sm"
+                        className="text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm"
                       >
                         {link.name}
                       </a>
@@ -131,13 +131,13 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="border-t border-neutral-800 pt-8"
+          className="border-t border-gray-200 dark:border-neutral-800 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-neutral-500 text-sm">
+            <p className="text-gray-500 dark:text-neutral-500 text-sm">
               © 2024 Startup. All rights reserved.
             </p>
-            <div className="flex items-center space-x-6 text-sm text-neutral-400">
+            <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-neutral-400">
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-1" />
                 <span>San Francisco, CA</span>
@@ -159,10 +159,10 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-8 pt-6 border-t border-neutral-800"
+          className="mt-8 pt-6 border-t border-gray-200 dark:border-neutral-800"
         >
           <div className="text-center">
-            <p className="text-neutral-500 text-xs">
+            <p className="text-gray-500 dark:text-neutral-500 text-xs">
               Made with ❤️ by the Startup team. Deployed on our own platform in under 30 seconds.
             </p>
           </div>
