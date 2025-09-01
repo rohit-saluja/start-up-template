@@ -1,69 +1,55 @@
 "use client";
 import { motion } from "motion/react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { 
   Rocket, 
   Workflow, 
   Network, 
   Sparkles, 
   Code, 
-  BarChart3,
-  Lock,
-  Headphones
+  BarChart3
 } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { Ripple } from "@/components/magicui/ripple";
+
+interface GridItemProps {
+  area: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const GridItem = ({ area, icon, title, description }: GridItemProps) => {
+  return (
+    <li className={`min-h-[14rem] list-none ${area}`}>
+      <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+        />
+        <div className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+          <div className="relative flex flex-1 flex-col justify-between gap-3">
+            <div className="w-fit rounded-lg border border-gray-600 p-2">
+              {icon}
+            </div>
+            <div className="space-y-3">
+              <h3 className="-tracking-4 pt-0.5 font-sans text-xl/[1.375rem] font-semibold text-balance text-black md:text-2xl/[1.875rem] dark:text-white">
+                {title}
+              </h3>
+              <p className="font-sans text-sm/[1.125rem] text-black md:text-base/[1.375rem] dark:text-neutral-400">
+                {description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};
 
 const Features = () => {
-  const features = [
-    {
-      icon: Rocket,
-      title: "One-Click Deployment",
-      description: "Deploy your applications instantly with a single click. No complex configurations or lengthy setup processes.",
-      badge: "Most Popular"
-    },
-    {
-      icon: Workflow,
-      title: "Intuitive Workflow",
-      description: "Streamlined development workflow that adapts to your team's needs. From development to production in minutes.",
-      badge: "New"
-    },
-    {
-      icon: Network,
-      title: "Edge Network Hosting",
-      description: "Leverage our global edge network for lightning-fast content delivery and optimal user experience worldwide.",
-      badge: "Performance"
-    },
-    {
-      icon: Sparkles,
-      title: "AI-Powered Optimization",
-      description: "Intelligent code optimization and performance suggestions powered by advanced AI algorithms.",
-      badge: "AI"
-    },
-    {
-      icon: Code,
-      title: "Developer Experience",
-      description: "Built by developers, for developers. Enjoy the best-in-class developer experience with powerful tooling.",
-      badge: "DX"
-    },
-    {
-      icon: BarChart3,
-      title: "Real-time Analytics",
-      description: "Comprehensive analytics and monitoring to track your application's performance and user engagement.",
-      badge: "Analytics"
-    },
-    {
-      icon: Lock,
-      title: "Enterprise Security",
-      description: "Bank-grade security with end-to-end encryption, compliance certifications, and advanced threat protection.",
-      badge: "Security"
-    },
-    {
-      icon: Headphones,
-      title: "24/7 Support",
-      description: "Round-the-clock expert support from our team of engineers. Get help when you need it most.",
-      badge: "Support"
-    }
-  ];
 
   return (
     <section className="py-20 px-6">
@@ -87,57 +73,106 @@ const Features = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="h-full"
-            >
-              <Card className="bg-gray-50 dark:bg-neutral-800/50 border-gray-200 dark:border-neutral-700 p-6 h-full flex flex-col backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-neutral-800/70 transition-all duration-300">
-                <div className="flex items-center justify-between mb-4">
-                  <feature.icon className="h-10 w-10 text-blue-400" />
-                  <Badge variant="secondary" className="bg-blue-600/20 text-blue-300 border-blue-500/30">
-                    {feature.badge}
-                  </Badge>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-neutral-400 flex-1">
-                  {feature.description}
-                </p>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
+            <GridItem
+              area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
+              icon={<Rocket className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="One-Click Deployment"
+              description="Deploy your applications instantly with a single click. No complex configurations or lengthy setup processes."
+            />
+
+            <GridItem
+              area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
+              icon={<Workflow className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="Intuitive Workflow"
+              description="Streamlined development workflow that adapts to your team's needs. From development to production in minutes."
+            />
+
+            <GridItem
+              area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
+              icon={<Network className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="Edge Network Hosting"
+              description="Leverage our global edge network for lightning-fast content delivery and optimal user experience worldwide."
+            />
+
+            <GridItem
+              area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
+              icon={<Sparkles className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="AI-Powered Optimization"
+              description="Intelligent code optimization and performance suggestions powered by advanced AI algorithms."
+            />
+
+            <GridItem
+              area="md:[grid-area:3/1/4/7] xl:[grid-area:2/8/3/10]"
+              icon={<Code className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="Developer Experience"
+              description="Built by developers, for developers. Enjoy the best-in-class developer experience with powerful tooling."
+            />
+
+            <GridItem
+              area="md:[grid-area:3/7/4/13] xl:[grid-area:2/10/3/13]"
+              icon={<BarChart3 className="h-4 w-4 text-black dark:text-neutral-400" />}
+              title="Real-time Analytics"
+              description="Comprehensive analytics and monitoring to track your application's performance and user engagement."
+            />
+          </ul>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-16"
         >
-          <div className="bg-gradient-to-r from-blue-500/5 dark:from-blue-500/10 to-purple-500/5 dark:to-purple-500/10 rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Ready to experience the future of deployment?
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Join thousands of developers who have revolutionized their workflow 
-              with our platform. Start your journey today.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
-            >
-              Get Started Free
-            </motion.button>
+          <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl border border-gray-200 dark:border-neutral-700">
+            <div className="grid md:grid-cols-2 min-h-[400px]">
+              {/* Left side - Content */}
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  Let's Get In Touch.
+                </h3>
+                <p className="text-gray-600 dark:text-neutral-400 mb-8 text-lg">
+                  Your innovation instruments should serve you, not the other way around. We're happy to help you.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-full font-medium transition-colors duration-200 flex items-center justify-center gap-2"
+                  >
+                    Book a discovery call
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="border border-gray-300 dark:border-neutral-600 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-neutral-800 transition-colors duration-200 flex items-center justify-center gap-2"
+                  >
+                    Test Your Samples
+                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Right side - Wave with Ripple */}
+              <div className="relative flex items-center justify-center overflow-hidden">
+                <div className="w-full h-full flex items-center justify-center absolute right-[-300px]">
+                  <Ripple 
+                    mainCircleSize={340}
+                    mainCircleOpacity={0.15}
+                    numCircles={5}
+                    className="opacity-60"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
