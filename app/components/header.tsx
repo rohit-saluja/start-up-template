@@ -3,16 +3,19 @@ import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 const Logo = () => {
   return (
     <div className="flex items-center gap-4">
-      <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-sm">
-        <img 
-          src="/Subtract.svg" 
-          alt="Logo" 
-          className="w-6 h-6"
-        />
+      <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
+        <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-6 h-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <img 
+            src="/Subtract.svg" 
+            alt="Logo" 
+            className="w-6 h-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+          />
+        </div>
       </div>
       <p className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-neutral-300 bg-clip-text text-transparent">
         Startup
@@ -63,8 +66,8 @@ const Navbar = ({ isScrolled }: { isScrolled: boolean }) => {
       }}
       transition={{
         type: "spring",
-        stiffness: 400,
-        damping: 30
+        stiffness: 200,
+        damping: 35
       }}
     >
       <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2" onMouseEnter={() => setActive("features")} onMouseLeave={() => setActive("")}>
@@ -96,31 +99,23 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getBorderColor = () => {
-    return theme === "dark" ? "rgb(64, 64, 64)" : "rgb(229, 231, 235)";
-  };
-
-  const getShadow = () => {
-    return theme === "dark" 
-      ? "0 10px 25px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1)"
-      : "0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)";
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-3">
       <motion.div
-        className="bg-white/95 dark:bg-black/80 backdrop-blur-md border-gray-200 dark:border-neutral-800"
+        className={cn(
+          "bg-white/95 dark:bg-black/80 backdrop-blur-md",
+          isScrolled && "border border-gray-200 dark:border-neutral-900 shadow-lg dark:shadow-black/30"
+        )}
         animate={{
           borderRadius: isScrolled ? "9999px" : "0px",
           maxWidth: isScrolled ? "800px" : "1200px",
-          margin: "0 auto",
-          border: isScrolled ? `1px solid ${getBorderColor()}` : "none",
-          boxShadow: isScrolled ? getShadow() : "none"
+          margin: "0 auto"
         }}
         transition={{
           type: "spring",
-          stiffness: 400,
-          damping: 30
+          stiffness: 200,
+          damping: 35
         }}
       >
         <div className="flex items-center mx-auto py-4 px-6 relative">
