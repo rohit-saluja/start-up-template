@@ -1,20 +1,18 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-3">
-      <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-blue-400 via-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-300/30 to-purple-400/30 rounded-xl"></div>
-        <div className="relative grid grid-cols-2 gap-0.5">
-          <div className="rounded-[2px] h-2.5 w-2.5 bg-white/90"></div>
-          <div className="rounded-[2px] h-2.5 w-2.5 bg-white/70"></div>
-          <div className="rounded-[2px] h-2.5 w-2.5 bg-white/70"></div>
-          <div className="rounded-[2px] h-2.5 w-2.5 bg-white/50"></div>
-        </div>
+    <div className="flex items-center gap-4">
+      <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-sm">
+        <img 
+          src="/Subtract.svg" 
+          alt="Logo" 
+          className="w-6 h-6"
+        />
       </div>
       <p className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-neutral-300 bg-clip-text text-transparent">
         Startup
@@ -36,7 +34,7 @@ const LoginButton = ({ isScrolled }: { isScrolled: boolean }) => {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-4">
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         className="p-2 rounded-md hover:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors"
@@ -46,9 +44,6 @@ const LoginButton = ({ isScrolled }: { isScrolled: boolean }) => {
         ) : (
           <Moon className="w-4 h-4 text-neutral-600 hover:text-blue-400 transition-colors" />
         )}
-      </button>
-      <button className="text-sm text-gray-900 dark:text-white font-semibold px-4 py-2 bg-transparent transition-all duration-200 relative cursor-pointer hover:-translate-y-0.5">
-        Login
       </button>
       <button className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-black rounded-md relative cursor-pointer hover:-translate-y-0.5 duration-200 transition">
         Book a call
