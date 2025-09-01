@@ -6,8 +6,15 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 const Logo = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 cursor-pointer" onClick={scrollToTop}>
       <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
         <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-[24px] h-[24px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img 
@@ -64,6 +71,16 @@ const navItems = [
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState<typeof navItems[number] | null>(null);
   
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+  
   return (
     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <nav className="flex items-center justify-center gap-0">
@@ -73,6 +90,7 @@ const Navbar = () => {
             className="text-sm text-gray-600 dark:text-neutral-300 relative px-6 py-2 cursor-pointer"
             onMouseEnter={() => setActiveTab(item)}
             onMouseLeave={() => setActiveTab(null)}
+            onClick={() => scrollToSection(item.id)}
           >
             <span className="relative z-10">{item.label}</span>
             <AnimatePresence>
@@ -98,7 +116,6 @@ const Navbar = () => {
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
   
   useEffect(() => {
     const handleScroll = () => {

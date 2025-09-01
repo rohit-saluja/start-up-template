@@ -38,7 +38,7 @@ const Hero = () => {
             <span className="whitespace-nowrap">zero</span>
             <ConfigurationTextFlip />
           </h1>
-          <p className="text-sm text-gray-600 dark:text-neutral-400 mb-8 max-w-4xl mx-auto">
+          <p className="text-base text-gray-600 dark:text-neutral-400 mb-8 max-w-4xl mx-auto">
             Experience one-click deployment with AI-powered optimization, edge network hosting, 
             and real-time analytics. Built for developers who demand speed and reliability.
           </p>

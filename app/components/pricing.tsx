@@ -67,7 +67,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section id="pricing" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 pb-[100px]">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
@@ -103,10 +103,11 @@ const Pricing = () => {
               <Card className={`
                 p-8 h-full flex flex-col relative overflow-hidden
                 ${plan.popular 
-                  ? 'bg-gradient-to-b from-blue-600/10 dark:from-blue-600/20 to-purple-600/10 dark:to-purple-600/20 border-blue-500/50' 
-                  : 'bg-gray-50 dark:bg-neutral-800/50 border-gray-200 dark:border-neutral-700'
+                  ? 'bg-gray-50 dark:bg-neutral-800/50 border-neutral-900' 
+                  : 'bg-gray-50 dark:bg-neutral-800/50 border-neutral-900'
                 }
                 backdrop-blur-sm hover:bg-opacity-80 transition-all duration-300
+                shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset]
               `}>
                 {plan.popular && (
                   <div className="absolute top-0 left-0 right-0">
@@ -129,10 +130,10 @@ const Pricing = () => {
 
                   <Button 
                     className={`
-                      w-full mb-8 py-6 text-lg font-semibold
+                      w-full mb-8 py-6 text-lg font-semibold cursor-pointer
                       ${plan.popular 
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                        : 'bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-neutral-600 text-gray-900 dark:text-white'
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset]' 
+                        : 'bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-neutral-600 text-gray-900 dark:text-white shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset]'
                       }
                     `}
                   >
@@ -160,7 +161,7 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-gray-100 dark:bg-neutral-800/30 rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
+          <div className="bg-gray-100 dark:bg-neutral-800/30 rounded-2xl p-8 border border-gray-200 dark:border-neutral-700 shadow-[2px_2px_15px_2px_rgba(0,0,0,.15)_inset] dark:shadow-[2px_2px_15px_2px_rgba(0,0,0,.25)_inset]">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Need a custom solution?
             </h3>
@@ -168,7 +169,7 @@ const Pricing = () => {
               We offer enterprise-grade solutions with custom pricing, dedicated infrastructure, 
               and white-label options for large organizations.
             </p>
-            <Button variant="outline" className="border-gray-300 dark:border-neutral-600 text-gray-900 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800">
+            <Button variant="outline" className="border-gray-300 dark:border-neutral-600 text-gray-900 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800 cursor-pointer shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset]">
               Contact Enterprise Sales
             </Button>
           </div>

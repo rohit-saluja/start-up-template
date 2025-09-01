@@ -34,13 +34,13 @@ export const Ripple = React.memo(function Ripple({
         return (
           <div
             key={i}
-            className={`absolute ${hovered ? 'animate-ripple' : ''} rounded-full border bg-foreground/25 shadow-xl`}
+            className={`absolute ${hovered ? 'animate-ripple' : ''} rounded-full border bg-foreground/25 shadow-xl transition-all duration-300`}
             style={
               {
                 "--i": i,
                 width: `${size}px`,
                 height: `${size}px`,
-                opacity,
+                opacity: hovered ? opacity : opacity * 0.7,
                 animationDelay: hovered ? animationDelay : '0s',
                 borderStyle,
                 borderWidth: "1px",
