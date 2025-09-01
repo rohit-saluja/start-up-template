@@ -52,7 +52,7 @@ const GridItem = ({ area, icon, title, description }: GridItemProps) => {
 const Features = () => {
 
   return (
-    <section className="py-20 px-6 pb-[100px]">
+    <section className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,6 +78,7 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
+          className="pb-[100px]"
         >
           <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
             <GridItem
