@@ -82,8 +82,8 @@ const Navbar = () => {
                   className="absolute inset-0 bg-gray-200 dark:bg-neutral-900 rounded-full shadow-inner shadow-black/05 dark:shadow-white/05"
                   transition={{
                     type: "spring",
-                    stiffness: 44,
-                    damping: 10,
+                    stiffness: 134,
+                    damping: 25,
                     mass: 1
                   }}
                 />
