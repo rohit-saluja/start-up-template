@@ -1,7 +1,7 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
@@ -57,9 +57,42 @@ const LoginButton = ({ isScrolled }: { isScrolled: boolean }) => {
 
 const Navbar = ({ isScrolled }: { isScrolled: boolean }) => {
   const [active, setActive] = useState<"features" | "pricing" | "contact" | "">("");
+  
+  const getBackgroundStyle = () => {
+    const gap = isScrolled ? 16 : 28;
+    const buttonWidth = 70; // approximate button width
+    
+    switch (active) {
+      case "features":
+        return {
+          left: 0,
+          width: buttonWidth,
+          height: 36
+        };
+      case "pricing":
+        return {
+          left: buttonWidth + gap,
+          width: buttonWidth,
+          height: 36
+        };
+      case "contact":
+        return {
+          left: (buttonWidth + gap) * 2,
+          width: buttonWidth,
+          height: 36
+        };
+      default:
+        return {
+          left: 0,
+          width: 0,
+          height: 36
+        };
+    }
+  };
+
   return (
     <motion.div 
-      className="flex items-center justify-center" 
+      className="flex items-center justify-center relative" 
       layoutId="navbar"
       animate={{
         gap: isScrolled ? "16px" : "28px"
@@ -70,17 +103,46 @@ const Navbar = ({ isScrolled }: { isScrolled: boolean }) => {
         damping: 35
       }}
     >
-      <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2" onMouseEnter={() => setActive("features")} onMouseLeave={() => setActive("")}>
-        <span>Features</span>
-        {active === "features" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+      <AnimatePresence>
+        {active && (
+          <motion.div 
+            className="absolute bg-gray-200 dark:bg-neutral-700 rounded-full opacity-50" 
+            layoutId="navbar-active"
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: 0.5,
+              ...getBackgroundStyle()
+            }}
+            exit={{ opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30
+            }}
+          />
+        )}
+      </AnimatePresence>
+      <button 
+        className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2 z-10" 
+        onMouseEnter={() => setActive("features")} 
+        onMouseLeave={() => setActive("")}
+      >
+        Features
       </button>
-      <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2" onMouseEnter={() => setActive("pricing")} onMouseLeave={() => setActive("")}>
-        <span>Pricing</span>
-        {active === "pricing" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+      <button 
+        className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2 z-10" 
+        onMouseEnter={() => setActive("pricing")} 
+        onMouseLeave={() => setActive("")}
+      >
+        Pricing
       </button>
-      <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2" onMouseEnter={() => setActive("contact")} onMouseLeave={() => setActive("")}>
-        <span>Contact</span>
-        {active === "contact" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+      <button 
+        className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2 z-10" 
+        onMouseEnter={() => setActive("contact")} 
+        onMouseLeave={() => setActive("")}
+      >
+        Contact
       </button>
     </motion.div>
   );
@@ -88,7 +150,6 @@ const Navbar = ({ isScrolled }: { isScrolled: boolean }) => {
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
   
   useEffect(() => {
     const handleScroll = () => {
