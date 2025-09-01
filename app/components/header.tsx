@@ -1,7 +1,7 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
@@ -55,27 +55,43 @@ const LoginButton = () => {
   );
 };
 
+const navItems = [
+  { id: "features", label: "Features" },
+  { id: "pricing", label: "Pricing" },
+  { id: "contact", label: "Contact" }
+] as const;
+
 const Navbar = () => {
-  const [active, setActive] = useState<"features" | "pricing" | "contact" | "">("");
+  const [activeTab, setActiveTab] = useState<typeof navItems[number] | null>(null);
+  
   return (
     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-      <motion.div 
-        className="flex items-center justify-center gap-8" 
-        layoutId="navbar"
-      >
-        <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-4 py-2" onMouseEnter={() => setActive("features")} onMouseLeave={() => setActive("")}>
-          <span>Features</span>
-          {active === "features" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-900 inset-0 rounded-full -z-10 opacity-50 shadow-inner shadow-black/05 dark:shadow-white/05" layoutId="navbar-active"></motion.div>}
-        </button>
-        <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-4 py-2" onMouseEnter={() => setActive("pricing")} onMouseLeave={() => setActive("")}>
-          <span>Pricing</span>
-          {active === "pricing" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-900 inset-0 rounded-full -z-10 opacity-50 shadow-inner shadow-black/05 dark:shadow-white/05" layoutId="navbar-active"></motion.div>}
-        </button>
-        <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-4 py-2" onMouseEnter={() => setActive("contact")} onMouseLeave={() => setActive("")}>
-          <span>Contact</span>
-          {active === "contact" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-900 inset-0 rounded-full -z-10 opacity-50 shadow-inner shadow-black/05 dark:shadow-white/05" layoutId="navbar-active"></motion.div>}
-        </button>
-      </motion.div>
+      <nav className="flex items-center justify-center gap-0">
+        {navItems.map((item) => (
+          <motion.button
+            key={item.id}
+            className="text-sm text-gray-600 dark:text-neutral-300 relative px-6 py-2 cursor-pointer"
+            onMouseEnter={() => setActiveTab(item)}
+            onMouseLeave={() => setActiveTab(null)}
+          >
+            <span className="relative z-10">{item.label}</span>
+            <AnimatePresence>
+              {activeTab?.id === item.id && (
+                <motion.div
+                  layoutId="navbar-active"
+                  className="absolute inset-0 bg-gray-200 dark:bg-neutral-900 rounded-full shadow-inner shadow-black/05 dark:shadow-white/05"
+                  transition={{
+                    type: "spring",
+                    stiffness: 44,
+                    damping: 10,
+                    mass: 1
+                  }}
+                />
+              )}
+            </AnimatePresence>
+          </motion.button>
+        ))}
+      </nav>
     </div>
   );
 };
