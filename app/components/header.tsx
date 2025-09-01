@@ -1,7 +1,7 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +9,7 @@ const Logo = () => {
   return (
     <div className="flex items-center gap-4">
       <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
-        <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-6 h-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-[22px] h-[22px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img 
             src="/Subtract.svg" 
             alt="Logo" 
@@ -48,7 +48,7 @@ const LoginButton = ({ isScrolled }: { isScrolled: boolean }) => {
           <Moon className="w-4 h-4 text-neutral-600 hover:text-blue-400 transition-colors" />
         )}
       </button>
-      <button className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-black rounded-md relative cursor-pointer hover:-translate-y-0.5 duration-200 transition">
+      <button className="px-3 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-black rounded-md relative cursor-pointer hover:-translate-y-0.5 duration-200 transition text-sm">
         Book a call
       </button>
     </div>
@@ -57,99 +57,32 @@ const LoginButton = ({ isScrolled }: { isScrolled: boolean }) => {
 
 const Navbar = ({ isScrolled }: { isScrolled: boolean }) => {
   const [active, setActive] = useState<"features" | "pricing" | "contact" | "">("");
-  
-  const getBackgroundStyle = () => {
-    const gap = isScrolled ? 16 : 28;
-    const buttonWidth = 70; // approximate button width
-    
-    switch (active) {
-      case "features":
-        return {
-          left: 0,
-          width: buttonWidth,
-          height: 36
-        };
-      case "pricing":
-        return {
-          left: buttonWidth + gap,
-          width: buttonWidth,
-          height: 36
-        };
-      case "contact":
-        return {
-          left: (buttonWidth + gap) * 2,
-          width: buttonWidth,
-          height: 36
-        };
-      default:
-        return {
-          left: 0,
-          width: 0,
-          height: 36
-        };
-    }
-  };
-
   return (
-    <motion.div 
-      className="flex items-center justify-center relative" 
-      layoutId="navbar"
-      animate={{
-        gap: isScrolled ? "16px" : "28px"
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 35
-      }}
-    >
-      <AnimatePresence>
-        {active && (
-          <motion.div 
-            className="absolute bg-gray-200 dark:bg-neutral-700 rounded-full opacity-50" 
-            layoutId="navbar-active"
-            layout
-            initial={{ opacity: 0 }}
-            animate={{ 
-              opacity: 0.5,
-              ...getBackgroundStyle()
-            }}
-            exit={{ opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30
-            }}
-          />
-        )}
-      </AnimatePresence>
-      <button 
-        className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2 z-10" 
-        onMouseEnter={() => setActive("features")} 
-        onMouseLeave={() => setActive("")}
+    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <motion.div 
+        className="flex items-center justify-center gap-10" 
+        layoutId="navbar"
       >
-        Features
-      </button>
-      <button 
-        className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2 z-10" 
-        onMouseEnter={() => setActive("pricing")} 
-        onMouseLeave={() => setActive("")}
-      >
-        Pricing
-      </button>
-      <button 
-        className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2 z-10" 
-        onMouseEnter={() => setActive("contact")} 
-        onMouseLeave={() => setActive("")}
-      >
-        Contact
-      </button>
-    </motion.div>
+        <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2" onMouseEnter={() => setActive("features")} onMouseLeave={() => setActive("")}>
+          <span>Features</span>
+          {active === "features" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+        </button>
+        <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2" onMouseEnter={() => setActive("pricing")} onMouseLeave={() => setActive("")}>
+          <span>Pricing</span>
+          {active === "pricing" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+        </button>
+        <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-2 py-2" onMouseEnter={() => setActive("contact")} onMouseLeave={() => setActive("")}>
+          <span>Contact</span>
+          {active === "contact" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+        </button>
+      </motion.div>
+    </div>
   );
 };
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme } = useTheme();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -175,17 +108,15 @@ export default function Header() {
         }}
         transition={{
           type: "spring",
-          stiffness: 200,
-          damping: 35
+          stiffness: 400,
+          damping: 30
         }}
       >
-        <div className="flex items-center mx-auto py-4 px-6 relative">
+        <div className={cn("flex items-center mx-auto px-6 relative", isScrolled ? "py-2" : "py-4")}>
           <div className="flex-1">
             <Logo />
           </div>
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <Navbar isScrolled={isScrolled} />
-          </div>
+          <Navbar isScrolled={isScrolled} />
           <div className="flex-1 flex justify-end">
             <LoginButton isScrolled={isScrolled} />
           </div>
