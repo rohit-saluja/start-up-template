@@ -69,7 +69,7 @@ const Footer = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
+                <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
                   <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-[24px] h-[24px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <img 
                       src="/Subtract.svg" 

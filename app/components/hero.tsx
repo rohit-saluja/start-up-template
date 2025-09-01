@@ -33,7 +33,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-8"
         >
-          <h1 className="text-5xl md:text-[88px] font-bold text-gray-900 dark:text-white mb-6 leading-tight flex flex-nowrap items-center justify-center gap-x-4 whitespace-nowrap">
+          <h1 className="text-5xl md:text-[88px] font-bold text-gray-900 dark:text-white mb-6 leading-tight flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-4 lg:whitespace-nowrap">
             <span className="whitespace-nowrap">Ship faster with</span>
             <span className="whitespace-nowrap">zero</span>
             <ConfigurationTextFlip />

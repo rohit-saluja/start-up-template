@@ -103,8 +103,8 @@ const Pricing = () => {
               <Card className={`
                 p-8 h-full flex flex-col relative overflow-hidden
                 ${plan.popular 
-                  ? 'bg-gray-50 dark:bg-neutral-800/50 border-neutral-900' 
-                  : 'bg-gray-50 dark:bg-neutral-800/50 border-neutral-900'
+                  ? 'bg-gray-50 dark:bg-neutral-800/50 border-gray-200 dark:border-neutral-900' 
+                  : 'bg-gray-50 dark:bg-neutral-800/50 border-gray-200 dark:border-neutral-900'
                 }
                 backdrop-blur-sm hover:bg-opacity-80 transition-all duration-300
                 shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset]
@@ -161,7 +161,7 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-gray-100 dark:bg-neutral-800/30 rounded-2xl p-8 border border-gray-200 dark:border-neutral-700 shadow-[2px_2px_15px_2px_rgba(0,0,0,.15)_inset] dark:shadow-[2px_2px_15px_2px_rgba(0,0,0,.25)_inset]">
+          <div className="bg-gray-100 dark:bg-neutral-800/30 rounded-2xl p-8 border border-gray-200 dark:border-neutral-700 shadow-[1px_1px_8px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[2px_2px_15px_2px_rgba(0,0,0,.25)_inset]">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Need a custom solution?
             </h3>

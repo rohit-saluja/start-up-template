@@ -1,5 +1,5 @@
 "use client";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
@@ -15,7 +15,7 @@ const Logo = () => {
 
   return (
     <div className="flex items-center gap-4 cursor-pointer" onClick={scrollToTop}>
-      <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
+      <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
         <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-[24px] h-[24px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img 
             src="/Subtract.svg" 
@@ -50,9 +50,9 @@ const LoginButton = () => {
         className="p-2 rounded-md hover:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors"
       >
         {theme === "dark" ? (
-          <Sun className="w-4 h-4 text-neutral-400 hover:text-yellow-400 transition-colors" />
+          <Sun className="w-4 h-4 text-neutral-400" />
         ) : (
-          <Moon className="w-4 h-4 text-neutral-600 hover:text-blue-400 transition-colors" />
+          <Moon className="w-4 h-4 text-neutral-600" />
         )}
       </button>
       <button className="px-3 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-black rounded-md relative cursor-pointer hover:-translate-y-0.5 duration-200 transition text-sm">
@@ -82,7 +82,7 @@ const Navbar = () => {
   };
   
   return (
-    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">
       <nav className="flex items-center justify-center gap-0">
         {navItems.map((item) => (
           <motion.button
@@ -114,8 +114,103 @@ const Navbar = () => {
   );
 };
 
+const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const [activeTab, setActiveTab] = useState<typeof navItems[number] | null>(null);
+  
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      onClose();
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            onClick={onClose}
+          />
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 h-full w-80 bg-white dark:bg-black border-l border-gray-200 dark:border-neutral-800 z-50 md:hidden"
+          >
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Menu</h2>
+                <button
+                  onClick={onClose}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-600 dark:text-neutral-400" />
+                </button>
+              </div>
+              
+              <nav className="space-y-2">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="w-full text-left relative p-4 rounded-lg cursor-pointer group"
+                    onMouseEnter={() => setActiveTab(item)}
+                    onMouseLeave={() => setActiveTab(null)}
+                    onClick={() => scrollToSection(item.id)}
+                  >
+                    <span className="relative z-10 text-gray-700 dark:text-neutral-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+                      {item.label}
+                    </span>
+                    <AnimatePresence>
+                      {activeTab?.id === item.id && (
+                        <motion.div
+                          layoutId="mobile-navbar-active"
+                          className="absolute inset-0 bg-gray-100 dark:bg-neutral-800 rounded-lg"
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 30
+                          }}
+                        />
+                      )}
+                    </AnimatePresence>
+                  </motion.button>
+                ))}
+              </nav>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const MobileMenuToggle = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <button
+      onClick={onClick}
+      className="p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg transition-colors md:hidden"
+    >
+      <Menu className="w-5 h-5 text-gray-600 dark:text-neutral-400" />
+    </button>
+  );
+};
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -155,11 +250,17 @@ export default function Header() {
             <Logo />
           </div>
           <Navbar />
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end items-center gap-2">
+            <MobileMenuToggle onClick={() => setIsMobileMenuOpen(true)} />
             <LoginButton  />
           </div>
         </div>
       </motion.div>
+      
+      <MobileMenu 
+        isOpen={isMobileMenuOpen} 
+        onClose={() => setIsMobileMenuOpen(false)} 
+      />
     </header>
   );
 }

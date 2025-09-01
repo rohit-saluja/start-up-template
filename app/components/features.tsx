@@ -121,12 +121,12 @@ const Features = () => {
           >
             <div className="grid md:grid-cols-2 min-h-[400px]">
               {/* Left side - Content */}
-              <div className="p-8 md:p-12 flex flex-col justify-center">
+              <div className="p-4 md:p-12 flex flex-col justify-center text-center md:text-left">
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Let's Get In Touch.</h3>
                 <p className="text-gray-600 dark:text-neutral-400 mb-8 text-sm">
                   Your innovation instruments should serve you, not the other way around. We're happy to help you.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-row justify-center md:justify-start gap-4">
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer">
                       Book a discovery call
@@ -147,7 +147,7 @@ const Features = () => {
 
               {/* Right side - Wave with Ripple */}
               <div className="relative flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center absolute right-[-300px]">
+                <div className="w-full h-full items-center justify-center absolute right-[-300px] hidden lg:flex">
                   <Ripple mainCircleSize={340} mainCircleOpacity={0.15} numCircles={5} hovered={isHovered} className="opacity-60" />
                 </div>
               </div>
