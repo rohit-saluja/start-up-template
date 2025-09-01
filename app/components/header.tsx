@@ -47,7 +47,7 @@ const LoginButton = () => {
     <div className="flex items-center gap-4">
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="p-2 rounded-md hover:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors"
+        className="p-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
       >
         {theme === "dark" ? (
           <Sun className="w-4 h-4 text-neutral-400" />
