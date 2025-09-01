@@ -65,15 +65,15 @@ const Navbar = () => {
       >
         <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-4 py-2" onMouseEnter={() => setActive("features")} onMouseLeave={() => setActive("")}>
           <span>Features</span>
-          {active === "features" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+          {active === "features" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-900 inset-0 rounded-full -z-10 opacity-50 shadow-inner shadow-black/05 dark:shadow-white/05" layoutId="navbar-active"></motion.div>}
         </button>
         <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-4 py-2" onMouseEnter={() => setActive("pricing")} onMouseLeave={() => setActive("")}>
           <span>Pricing</span>
-          {active === "pricing" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+          {active === "pricing" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-900 inset-0 rounded-full -z-10 opacity-50 shadow-inner shadow-black/05 dark:shadow-white/05" layoutId="navbar-active"></motion.div>}
         </button>
         <button className="text-sm text-gray-600 dark:text-neutral-300 relative px-4 py-2" onMouseEnter={() => setActive("contact")} onMouseLeave={() => setActive("")}>
           <span>Contact</span>
-          {active === "contact" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-700 inset-0 rounded-full -z-10 opacity-50" layoutId="navbar-active"></motion.div>}
+          {active === "contact" && <motion.div className="absolute bg-gray-200 dark:bg-neutral-900 inset-0 rounded-full -z-10 opacity-50 shadow-inner shadow-black/05 dark:shadow-white/05" layoutId="navbar-active"></motion.div>}
         </button>
       </motion.div>
     </div>
