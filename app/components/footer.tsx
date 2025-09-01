@@ -79,7 +79,7 @@ const Footer = () => {
                 </div>
                 <p className="text-xl font-semibold text-gray-900 dark:text-white">Startup</p>
               </div>
-              <p className="text-gray-600 dark:text-neutral-400 mb-6 max-w-sm">
+              <p className="text-sm text-gray-600 dark:text-neutral-400 mb-6 max-w-sm">
                 The fastest way to deploy and scale your applications. 
                 Built for developers, trusted by enterprises.
               </p>

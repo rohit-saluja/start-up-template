@@ -114,9 +114,13 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-3">
       <motion.div
         className={cn(
-          "bg-white/95 dark:bg-black/80",
-          isScrolled && "backdrop-blur-md border border-gray-200 dark:border-neutral-900 shadow-lg"
+          isScrolled ? "bg-white/95 dark:bg-black/80 backdrop-blur-md border border-gray-200 dark:border-neutral-900 shadow-lg" : ""
         )}
+        initial={{
+          borderRadius: "0px",
+          maxWidth: "1200px",
+          margin: "0 auto"
+        }}
         animate={{
           borderRadius: isScrolled ? "9999px" : "0px",
           maxWidth: isScrolled ? "800px" : "1200px",

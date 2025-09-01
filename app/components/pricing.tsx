@@ -83,7 +83,7 @@ const Pricing = () => {
             </span>{" "}
             pricing
           </h2>
-          <p className="text-xl text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
+          <p className="text-sm text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
             Choose the perfect plan for your needs. All plans include our core features 
             with no hidden fees or surprise charges.
           </p>
@@ -120,7 +120,7 @@ const Pricing = () => {
                 <div className={`${plan.popular ? 'mt-10' : 'mt-0'}`}>
                   <div className="mb-8">
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
-                    <p className="text-gray-600 dark:text-neutral-400 mb-4">{plan.description}</p>
+                    <p className="text-sm text-gray-600 dark:text-neutral-400 mb-4">{plan.description}</p>
                     <div className="flex items-baseline">
                       <span className="text-5xl font-bold text-gray-900 dark:text-white">{plan.price}</span>
                       <span className="text-xl text-gray-600 dark:text-neutral-400 ml-1">{plan.period}</span>
@@ -143,7 +143,7 @@ const Pricing = () => {
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
                         <Check className="h-5 w-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700 dark:text-neutral-300">{feature}</span>
+                        <span className="text-sm text-gray-700 dark:text-neutral-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -164,7 +164,7 @@ const Pricing = () => {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Need a custom solution?
             </h3>
-            <p className="text-gray-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
+            <p className="text-sm text-gray-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
               We offer enterprise-grade solutions with custom pricing, dedicated infrastructure, 
               and white-label options for large organizations.
             </p>
