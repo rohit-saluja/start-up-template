@@ -6,12 +6,14 @@ interface RippleProps extends ComponentPropsWithoutRef<"div"> {
   mainCircleSize?: number;
   mainCircleOpacity?: number;
   numCircles?: number;
+  hovered?: boolean;
 }
 
 export const Ripple = React.memo(function Ripple({
   mainCircleSize = 210,
   mainCircleOpacity = 0.24,
   numCircles = 8,
+  hovered = false,
   className,
   ...props
 }: RippleProps) {
@@ -32,14 +34,14 @@ export const Ripple = React.memo(function Ripple({
         return (
           <div
             key={i}
-            className={`absolute animate-ripple rounded-full border bg-foreground/25 shadow-xl`}
+            className={`absolute ${hovered ? 'animate-ripple' : ''} rounded-full border bg-foreground/25 shadow-xl`}
             style={
               {
                 "--i": i,
                 width: `${size}px`,
                 height: `${size}px`,
                 opacity,
-                animationDelay,
+                animationDelay: hovered ? animationDelay : '0s',
                 borderStyle,
                 borderWidth: "1px",
                 borderColor: `var(--foreground)`,

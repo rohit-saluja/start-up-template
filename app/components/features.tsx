@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "motion/react";
+import { useState } from "react";
 import { 
   Rocket, 
   Workflow, 
@@ -50,6 +51,7 @@ const GridItem = ({ area, icon, title, description }: GridItemProps) => {
 };
 
 const Features = () => {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section className="py-20 px-6">
@@ -132,7 +134,11 @@ const Features = () => {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl border border-gray-200 dark:border-neutral-700">
+          <div 
+            className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-neutral-900 dark:to-neutral-800 rounded-3xl border border-gray-200 dark:border-neutral-700"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             <div className="grid md:grid-cols-2 min-h-[400px]">
               {/* Left side - Content */}
               <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -169,6 +175,7 @@ const Features = () => {
                     mainCircleSize={340}
                     mainCircleOpacity={0.15}
                     numCircles={5}
+                    hovered={isHovered}
                     className="opacity-60"
                   />
                 </div>
