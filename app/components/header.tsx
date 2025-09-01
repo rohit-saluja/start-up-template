@@ -9,7 +9,7 @@ const Logo = () => {
   return (
     <div className="flex items-center gap-4">
       <div className="relative h-[40px] w-[40px] bg-gradient-to-br from-neutral-700 to-neutral-800 rounded-lg flex items-center justify-center shadow-[0_10px_10px_-3px_rgba(255,255,255,.05)]">
-        <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-[22px] h-[22px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-[24px] h-[24px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img 
             src="/Subtract.svg" 
             alt="Logo" 
@@ -82,8 +82,8 @@ const Navbar = () => {
                   className="absolute inset-0 bg-gray-200 dark:bg-neutral-900 rounded-full shadow-inner shadow-black/05 dark:shadow-white/05"
                   transition={{
                     type: "spring",
-                    stiffness: 134,
-                    damping: 25,
+                    stiffness: 547,
+                    damping: 37,
                     mass: 1
                   }}
                 />
