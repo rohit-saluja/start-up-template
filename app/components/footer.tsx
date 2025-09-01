@@ -166,7 +166,16 @@ const Footer = () => {
         >
           <div className="text-center">
             <p className="text-gray-500 dark:text-neutral-500 text-xs">
-              Made with ❤️ by the Startup team. Deployed on our own platform in under 30 seconds.
+              Made with ❤️ by{" "}
+              <a 
+                href="https://x.com/codewithrohit" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+              >
+                @rohit
+              </a>
+              . Deployed on our own platform in under 30 seconds.
             </p>
           </div>
         </motion.div>
