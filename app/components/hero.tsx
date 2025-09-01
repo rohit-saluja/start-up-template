@@ -18,9 +18,9 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-8"
         >
-          <h1 className="text-5xl md:text-[88px] font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 dark:from-neutral-50 dark:to-neutral-400 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-[88px] font-bold text-gray-900 dark:text-white mb-6 leading-tight">
             Turn your{" "}
-            <span className="bg-gradient-to-b from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               vision
             </span>
             {" "}into reality
