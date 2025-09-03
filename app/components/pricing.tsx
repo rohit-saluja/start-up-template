@@ -130,7 +130,7 @@ const Pricing = () => {
 
                   <Button 
                     className={`
-                      w-full mb-8 py-6 text-lg font-semibold cursor-pointer
+                      w-full mb-8 font-semibold cursor-pointer
                       ${plan.popular 
                         ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset]' 
                         : 'bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-neutral-600 text-gray-900 dark:text-white shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset]'

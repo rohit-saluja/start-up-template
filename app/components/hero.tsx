@@ -38,7 +38,7 @@ const Hero = () => {
             <span className="whitespace-nowrap">zero</span>
             <ConfigurationTextFlip />
           </h1>
-          <p className="text-base text-gray-600 dark:text-neutral-400 mb-8 max-w-4xl mx-auto">
+          <p className="text-sm md:text-base text-gray-600 dark:text-neutral-400 mb-8 max-w-4xl mx-auto">
             Experience one-click deployment with AI-powered optimization, edge network hosting, 
             and real-time analytics. Built for developers who demand speed and reliability.
           </p>
@@ -50,14 +50,14 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg cursor-pointer">
+          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer">
             Start Your Journey
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
           <Button 
             variant="outline" 
             size="lg" 
-            className="border-gray-300 dark:border-neutral-900 text-gray-900 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800 px-8 py-6 text-lg shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset] cursor-pointer"
+            className="border-gray-300 dark:border-neutral-900 text-gray-900 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800 shadow-[1px_1px_10px_1px_rgba(0,0,0,.08)_inset] dark:shadow-[1px_1px_10px_1px_rgba(255,255,255,.08)_inset] cursor-pointer"
           >
             Schedule Demo
           </Button>
