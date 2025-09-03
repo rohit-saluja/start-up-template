@@ -126,7 +126,7 @@ const Features = () => {
                 <p className="text-gray-600 dark:text-neutral-400 mb-8 text-sm">
                   Your innovation instruments should serve you, not the other way around. We're happy to help you.
                 </p>
-                <div className="flex flex-row justify-center md:justify-start gap-4">
+                <div className="flex flex-col md:flex-row justify-center md:justify-start gap-4">
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer">
                       Book a discovery call

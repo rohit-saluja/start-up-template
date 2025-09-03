@@ -55,7 +55,7 @@ const LoginButton = () => {
           <Moon className="w-4 h-4 text-neutral-600" />
         )}
       </button>
-      <button className="px-3 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-black rounded-md relative cursor-pointer hover:-translate-y-0.5 duration-200 transition text-sm">
+      <button className="hidden md:block px-3 py-1.5 bg-gray-900 dark:bg-white text-white dark:text-black rounded-md relative cursor-pointer hover:-translate-y-0.5 duration-200 transition text-sm">
         Book a call
       </button>
     </div>
@@ -223,7 +223,7 @@ export default function Header() {
 
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 px-2 md:px-6 py-3">
       <motion.div
         className={cn(
           isScrolled ? "bg-white/95 dark:bg-black/80 backdrop-blur-md border border-gray-200 dark:border-neutral-900 shadow-lg" : ""

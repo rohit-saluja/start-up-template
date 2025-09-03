@@ -136,11 +136,11 @@ const Footer = () => {
           viewport={{ once: true }}
           className="border-t border-gray-200 dark:border-neutral-800 pt-8"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center space-y-4 md:space-y-0">
             <p className="text-gray-500 dark:text-neutral-500 text-sm">
               © 2024 Startup. All rights reserved.
             </p>
-            <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-neutral-400">
+            <div className="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-gray-500 dark:text-neutral-400">
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-1" />
                 <span>San Francisco, CA</span>
